@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cccccc;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #555555;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #666666;
+            background-color: #404040;
+        }
+
+        input[type="number"]::placeholder {
+            color: #888888;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #4a4a4a;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #5a5a5a;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .positive {
+            color: #fff;
+            background-color: #FF4C4C;
+        }
+
+        .negative {
+            color: #fff;
+            background-color: #28A745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Diabetes Prediction</h2>
+        <form method="POST">
+            <div class="input-group">
+                <label for="Pregnancies">Pregnancies</label>
+                <input type="number" step="any" name="Pregnancies" id="Pregnancies" placeholder="Number of pregnancies" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Glucose">Glucose</label>
+                <input type="number" step="any" name="Glucose" id="Glucose" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="BloodPressure">Blood Pressure</label>
+                <input type="number" step="any" name="BloodPressure" id="BloodPressure" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="SkinThickness">Skin Thickness</label>
+                <input type="number" step="any" name="SkinThickness" id="SkinThickness" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Insulin">Insulin</label>
+                <input type="number" step="any" name="Insulin" id="Insulin" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="BMI">BMI</label>
+                <input type="number" step="any" name="BMI" id="BMI" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                <input type="number" step="any" name="DiabetesPedigreeFunction" id="DiabetesPedigreeFunction" placeholder="Enter the value" required>
+            </div>
+
+            <div class="input-group">
+                <label for="Age">Age</label>
+                <input type="number" step="any" name="Age" id="Age" placeholder="Enter the age" required>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+            <div class="result {% if 'NOT' in result %}negative{% else %}positive{% endif %}">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
